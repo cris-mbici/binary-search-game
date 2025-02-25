@@ -4,8 +4,13 @@ import math
 #User sets their lower and upper bounds
 print("Start by picking your range.")
 print("Hint: Use binary search to optimize you search by always guessing the middle number")
-lower_limit = int(input("Lower limit: "))
-upper_limit = int(input("Upper limit: "))
+while True:
+  try:
+    lower_limit = int(input("Lower limit: "))
+    upper_limit = int(input("Upper limit: "))
+    break
+  except ValueError:
+    print("Please enter whole numbers in both fields")
 target_number = random.randint(lower_limit, upper_limit)
 
 #Python gets the range and gives the user the ideal number of searches
@@ -21,7 +26,12 @@ def output_protocol():
   global guess_count
   guess_count += 1
   x = 0
-  x = int(input("Guess: "))
+  while True:
+    try:
+      x = int(input("Guess: "))
+      break
+    except ValueError:
+      print("Please enter a whole number")
   
   if x > upper_limit or x < lower_limit:
     print("Enter a number in the correct range.")
